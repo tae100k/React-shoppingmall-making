@@ -8,6 +8,7 @@ import imgA from './shoes1.jpg';
 import imgB from './shoes4.jpg';
 import imgC from './shoes3.jpg';
 import Data from './data';
+import {Link, Route, Switch} from 'react-router-dom';
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
         <Container fluid>
           <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll">
+          <Navbar.Collapse id="navbarScroll">cd
             <Nav
               className="me-auto my-2 my-lg-0"
               style={{ maxHeight: '100px' }}
@@ -55,6 +56,11 @@ function App() {
         <h1 className="display-4">20% Season Off</h1>
           <p className="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
       </div>
+      <Route path="/detail"><div>디테일 컴포넌트입니다.</div></Route>
+ 
+
+
+
       <div className="container">
         <div className="row">
           {
