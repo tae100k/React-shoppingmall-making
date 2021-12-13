@@ -8,6 +8,7 @@ import imgA from './shoes1.jpg';
 import imgB from './shoes4.jpg';
 import imgC from './shoes3.jpg';
 import Data from './data';
+import Detail from './Detail.js';
 import {Link, Route, Switch} from 'react-router-dom';
 
 function App() {
@@ -21,13 +22,13 @@ function App() {
         <Container fluid>
           <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll">cd
+          <Navbar.Collapse id="navbarScroll">
             <Nav
               className="me-auto my-2 my-lg-0"
               style={{ maxHeight: '100px' }}
               navbarScroll >
-              <Nav.Link href="#action1">Home</Nav.Link>
-              <Nav.Link href="#action2">Link</Nav.Link>
+              <Nav.Link> <Link to="/">Home</Link></Nav.Link>
+              <Nav.Link><Link to ="/detail">Detail</Link></Nav.Link>
               <NavDropdown title="Link" id="navbarScrollingDropdown">
                 <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
@@ -52,27 +53,49 @@ function App() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <div className="jumbotron">
-        <h1 className="display-4">20% Season Off</h1>
-          <p className="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-      </div>
-      <Route path="/detail"><div>디테일 컴포넌트입니다.</div></Route>
+      <Switch>
+        <Route path="/">
+          <div>
+            <div className="jumbotron">
+              <h1 className="display-4">20% Season Off</h1>
+                <p className="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            </div>
+          </div>
+          <div className="container">
+            <div className="row">
+              {
+                shoes.map((v, index)=>{
+                  return (<Col shoes={shoes[index]} index={index} photos={photos[index]}/>)
+                })
+              }
+            </div>
+          </div>
+        </Route>
+
+        <Route path="/detail">
+            <Detail/>
+      </Route>
+
+      <Route path ="/:id">
+        <div>아무거나 적었을 때 이거 보여주셈</div>
+      </Route>
+
+
+
+
+      </Switch>
+
+      
  
 
 
 
-      <div className="container">
-        <div className="row">
-          {
-            shoes.map((v, index)=>{
-              return (<Col shoes={shoes[index]} index={index} photos={photos[index]}/>)
-            })
-          }
-        </div>
-      </div>
+      
    </div>
   );
 }
+
+
 
 function Col(props) {
   return (
