@@ -54,7 +54,8 @@ function App() {
         </Container>
       </Navbar>
       <Switch>
-        <Route path="/">
+        
+        <Route exact path="/">
           <div>
             <div className="jumbotron">
               <h1 className="display-4">20% Season Off</h1>
@@ -72,25 +73,12 @@ function App() {
           </div>
         </Route>
 
-        <Route path="/detail">
-            <Detail/>
-      </Route>
-
-      <Route path ="/:id">
-        <div>아무거나 적었을 때 이거 보여주셈</div>
-      </Route>
-
-
+        <Route path="/detail/:id">
+          <Detail shoes={shoes}/>
+        </Route>
 
 
       </Switch>
-
-      
- 
-
-
-
-      
    </div>
   );
 }
