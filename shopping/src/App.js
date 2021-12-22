@@ -2,7 +2,7 @@
 
 import logo from './logo.svg';
 import './App.css';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 import imgA from './shoes1.jpg';
 import imgB from './shoes4.jpg';
@@ -10,11 +10,15 @@ import imgC from './shoes3.jpg';
 import Data from './data';
 import Detail from './Detail.js';
 import {Link, Route, Switch} from 'react-router-dom';
+import{CSSTransition} from "react-transition-group";
+
+let 재고context = React.createContext();
 
 function App() {
 
   let[shoes, shoes변경] = useState(Data);
   let[photos, photos변경] = useState([imgA, imgB, imgC])
+  let[재고, 재고변경] = useState([10, 11, 12])
 
   return (
     <div className="App">
@@ -61,6 +65,9 @@ function App() {
                 <p className="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
             </div>
           </div>
+
+          <재고context.Provider value={재고}>
+
           <div className="container">
             <div className="row">
               {
@@ -70,6 +77,8 @@ function App() {
               }
             </div>
           </div>
+
+          </재고context.Provider>
         </Route>
 
         <Route path="/detail">
@@ -98,12 +107,14 @@ function App() {
 
 
 function Col(props) {
+  let 재고 = useContext(재고context);
   return (
     <div className="col-md-4">
       <img src={props.photos} width="100%"/>
       <h4>{props.shoes.title}</h4>
       <p>{props.shoes.content}</p>
       <p>{props.shoes.price}</p>
+      {재고}
     </div>)
 }
 

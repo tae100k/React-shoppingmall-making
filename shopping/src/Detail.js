@@ -3,6 +3,7 @@ import imgA from './shoes1.jpg';
 import {useHistory} from 'react-router-dom'
 
 
+
 function Detail() {
 
     let histroy = useHistory();
@@ -14,6 +15,7 @@ function Detail() {
           <img src={imgA}/>
         </div>
         <h4 className="pt-5">상품명</h4>
+        
         <p>상품 설명</p>
         <p>12000원</p>
         <button className="btn btn-danger">주문하기</button>
@@ -23,5 +25,6 @@ function Detail() {
       </div>
     </div>)
 }
+
 
 export default Detail
