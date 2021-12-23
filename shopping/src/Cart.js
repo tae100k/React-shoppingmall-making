@@ -1,6 +1,7 @@
 import React from 'react';
 import {Table} from 'react-bootstrap';
 import {connect} from 'react-redux';
+import './Cart.css';
 
 function Cart(props){
     return (
@@ -33,14 +34,26 @@ function Cart(props){
                 }
 
             </Table>
+            {
+                props.isAlert ? (
+                <div className = "my-alert">
+                    <p>지금 구매하시면 신규할인</p>
+                    <button onClick={()=>{
+                        props.dispatch({type:'닫기'})
+                    }}>닫기</button>
+                </div>) : null
+            }
+                
             </div>
         </div>
     );
 }
 
 function 함수명(state) {
+    console.log(state)
     return {
-        state : state
+        state : state.reducer,
+        isAlert : state.reducer2
     }
 }
 

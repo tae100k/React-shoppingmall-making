@@ -5,7 +5,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
-import { createStore } from 'redux';
+import { combineReducers, createStore } from 'redux';
+
+let alert초깃값 = true;
+
+function reducer2(state=alert초깃값, 액션){
+  if (액션.type ==='닫기') {
+    state=false;
+    return state;
+  }
+  return state;
+}
 
 
 let 기본state=[
@@ -32,7 +42,7 @@ function reducer(state =기본state, 액션) {
   }
 }
 
-let store = createStore(reducer);
+let store = createStore(combineReducers({reducer, reducer2}));
 
 
 
