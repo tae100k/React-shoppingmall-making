@@ -11,6 +11,7 @@ import Data from './data';
 import Detail from './Detail.js';
 import {Link, Route, Switch} from 'react-router-dom';
 import{CSSTransition} from "react-transition-group";
+import Cart from './Cart.js';
 
 let 재고context = React.createContext();
 
@@ -57,8 +58,8 @@ function App() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Switch>
-        <Route path="/">
+
+        <Route exact path="/">
           <div>
             <div className="jumbotron">
               <h1 className="display-4">20% Season Off</h1>
@@ -81,18 +82,19 @@ function App() {
           </재고context.Provider>
         </Route>
 
-        <Route path="/detail">
+        <Route exact path="/detail">
             <Detail/>
       </Route>
 
-      <Route path ="/:id">
+      <Route exact path ="/:id">
         <div>아무거나 적었을 때 이거 보여주셈</div>
+        
+  
+      </Route>
+      <Route exact path="/cart">
+        <Cart></Cart>
       </Route>
 
-
-
-
-      </Switch>
 
       
  
